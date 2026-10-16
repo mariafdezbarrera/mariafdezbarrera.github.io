@@ -37,3 +37,175 @@
     "layout/sidebar",
     "layout/json_cv"
 ;
+
+
+/* ==========================================
+   Personal academic portfolio
+   Minimal black-and-white design
+   ========================================== */
+
+html {
+  background: #000 !important;
+}
+
+body {
+  background: #000 !important;
+  color: #e8e8e8 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* Main content areas */
+#main,
+.page,
+.archive,
+.page__content,
+.initial-content,
+.page__inner-wrap,
+.sidebar,
+.author__content,
+.author__urls-wrapper,
+.masthead,
+.masthead__inner-wrap,
+.greedy-nav,
+.page__footer {
+  background: #000 !important;
+  color: #e8e8e8 !important;
+}
+
+/* Main content width and spacing */
+#main {
+  max-width: 1100px;
+}
+
+.page__content {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6,
+.archive__item-title {
+  color: #fff !important;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+h1 {
+  font-size: 2rem;
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid #333;
+}
+
+h3 {
+  font-size: 1.15rem;
+  margin-top: 1.8rem;
+}
+
+/* Bold text: highlight key academic information */
+strong,
+b {
+  color: #fff !important;
+  font-weight: 700;
+}
+
+/* Links */
+a,
+a:visited {
+  color: #e5e5e5 !important;
+  text-decoration: underline;
+  text-decoration-color: #555;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #fff !important;
+  text-decoration-color: #fff;
+}
+
+/* Top navigation */
+.masthead {
+  border-bottom: 1px solid #292929 !important;
+}
+
+.masthead__menu-item a,
+.greedy-nav a,
+.greedy-nav .visible-links a {
+  color: #e8e8e8 !important;
+  font-weight: 500;
+}
+
+.greedy-nav .visible-links a:hover {
+  color: #fff !important;
+  background: transparent !important;
+}
+
+/* Profile image */
+.author__avatar img {
+  max-width: 180px;
+  border-radius: 50%;
+  border: 1px solid #333;
+}
+
+/* Profile name and biography */
+.author__name {
+  color: #fff !important;
+  font-weight: 700;
+}
+
+.author__bio,
+.author__content,
+.author__urls {
+  color: #ccc !important;
+}
+
+/* Lists */
+ul, ol {
+  color: #ddd;
+}
+
+li {
+  margin-bottom: 0.35rem;
+}
+
+/* Dividers and footer */
+hr,
+.page__footer {
+  border-color: #333 !important;
+}
+
+.page__footer {
+  color: #999 !important;
+  border-top: 1px solid #292929 !important;
+}
+
+/* Remove unnecessary shadows and rounded cards */
+.archive__item,
+.page__content,
+.sidebar {
+  box-shadow: none !important;
+}
+
+/* Responsive typography */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+  }
+
+  body {
+    font-size: 15px;
+  }
+}
