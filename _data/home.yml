@@ -1,42 +1,44 @@
 # =====================================================================
 #  CONTENIDO DE LA PÁGINA PRINCIPAL (https://mariafdezbarrera.github.io)
-#  Edita este archivo para cambiar textos, enlaces, premios y secciones.
+#  Edita este archivo para cambiar textos, enlaces y secciones.
 #  Las publicaciones van en la carpeta _publications/ y las charlas en _talks/
-#  Busca "TODO" para ver lo que falta por completar.
+#  (si están vacías, esas secciones no aparecen).
 # =====================================================================
 
 lang: en
-name: "María del Pilar Fernández Barrera"
-role: "PhD student in Artificial Intelligence · Universitat de Barcelona"   # TODO: ajusta tu puesto/universidad
-location: "Barcelona, Spain"                                                # TODO
-description: "María del Pilar Fernández Barrera, PhD researcher in AI for health and nutrition."
+name: "María Fernández Barrera"
+role: "PhD candidate in AI & Computer Science · Universitat de Barcelona"
+location: "Madrid, Spain"
+description: "María Fernández Barrera, PhD candidate at the Universitat de Barcelona working on artificial intelligence and computer vision for biology and medicine."
 
-# Foto (cuadrada o vertical 4:5). Sube tu foto a images/ con este nombre.
+# Foto (se recorta en formato vertical 4:5). Sustituye images/profile.jpg para cambiarla.
 photo: "images/profile.jpg"
 
 # Biografía (admite Markdown: **negrita**, [enlace](url), párrafos separados por línea en blanco)
 bio: |
-  I am a PhD student at the [Universitat de Barcelona](https://www.ub.edu/) working on artificial intelligence
-  for health and nutrition. TODO: one or two sentences about your thesis topic, research group and funding.
+  I am a PhD candidate at the [Faculty of Mathematics and Computer Science, Universitat de Barcelona](https://mat.ub.edu/en/),
+  and a member of the [AIBA](https://www.ub.edu/aiba/) research group. My research focuses on artificial intelligence and
+  computer vision applied to biology and medicine, and I supervise students in their research projects.
 
-  I hold a Master's Degree in [Health Data Science (MHEDAS)](https://www.urv.cat/en/studies/master/courses/health-data-science/),
-  where my thesis introduced NutritionBERT, a physics-informed masked transformer for nutritional profile prediction.
-  TODO: previous degrees and professional experience.
+  Before the PhD I spent nearly 20 years as an R&D and engineering leader, turning Data & AI research into production systems
+  for regulated industries, most recently as Principal Architect, Data & AI at Intelygenz (VASS Group), Sopra Steria and KPMG Lighthouse.
+  I hold an MSc in Biomedical Data Science from the Universitat Rovira i Virgili, an MSc in Advanced and Applied Artificial
+  Intelligence from the Universitat de València, and a First Class BSc (Hons) in Computing from Edinburgh Napier University.
 
-# Botones de enlaces bajo la biografía. Los archivos locales van en files/ (p. ej. files/CV.pdf)
+# Botones de enlaces bajo la biografía. Los archivos locales van en files/
 links:
   - name: Email
-    url: "mailto:TODO@example.com"          # TODO: tu email público
+    url: "mailto:mfernaba184@doct.ub.edu"
   - name: CV
-    url: "files/CV.pdf"                      # sube tu CV a files/CV.pdf
-  - name: Google Scholar
-    url: "https://scholar.google.com/"      # TODO
+    url: "files/CV.pdf"
   - name: LinkedIn
-    url: "https://www.linkedin.com/"        # TODO
+    url: "https://www.linkedin.com/in/mar%C3%ADa-fern%C3%A1ndez-barrera"
   - name: GitHub
     url: "https://github.com/mariafdezbarrera"
+  # - name: Google Scholar        # quita las almohadillas cuando tengas perfil
+  #   url: "https://scholar.google.com/citations?user=XXXX"
 
-# Títulos de las secciones (puedes traducirlos al español)
+# Títulos de las secciones
 labels:
   research: "Research"
   awards: "Awards"
@@ -45,39 +47,81 @@ labels:
   talks: "Talks & posters"
 
 # ---------------------------------------------------------------------
-# Sección Research (déjala vacía o bórrala para ocultarla)
+# Sección Research
 research: |
-  I work on machine learning for health data: representation learning, transformers and nutrition informatics.
-  TODO: describe your PhD project, funding and grant numbers. My supervisors are:
+  I work on artificial intelligence and computer vision for biology and medicine: medical image analysis,
+  computer-aided diagnosis, multimodal models, clinical omics and food computing, with a focus on models whose reported
+  performance reflects real generalisation. My supervisors are:
 
+# Directores de tesis (foto cuadrada en images/)
 supervisors:
-  - name: "Petia Radeva"                     # TODO: confirma tus directores
+  - name: "Petia Radeva"
     url: "http://www.ub.edu/cvub/petiaradeva/"
-    photo: "images/supervisor1.jpg"         # sube la foto a images/
-    desc: "Full Professor at the Universitat de Barcelona and head of the AIBA research group."
-  - name: "TODO Supervisor 2"
-    url: ""
-    photo: "images/supervisor2.jpg"
-    desc: "TODO: affiliation."
+    photo: "images/supervisor-petia.jpg"
+    desc: "Full Professor at the Universitat de Barcelona, head of the AIBA consolidated research group, and Senior Researcher at the Computer Vision Center."
+  - name: "Carles Maria Falcon Falcon"
+    url: "https://www.clinicbarcelona.org/idibaps/organizacion-de-la-investigacion/neurociencias-clinicas-y-experimentales/neuropsicologia-y-neuroimagen"
+    photo: "images/supervisor-carles.jpg"
+    desc: "Associate Professor at the Universitat de Barcelona. Physicist with a PhD in medical imaging, neuroimaging researcher (MRI, nuclear medicine) at the IDIBAPS Neuropsychology and Neuroimaging group."
+  - name: "Ahmad AlMughrabi"
+    url: "https://amughrabi.github.io/"
+    photo: "images/supervisor-ahmad.jpg"
+    desc: "Faculty of Mathematics and Computer Science, Universitat de Barcelona, and AIBA research group; works on neural radiance fields and 3D reconstruction for food volume estimation."
+  # Para añadir otra persona, copia uno de los bloques anteriores (desde "- name:").
 
 # ---------------------------------------------------------------------
-# Premios (bórralos todos para ocultar la sección)
-awards:
-  - date: "2026"
-    text: "**TODO award name**, Institution"
+# Premios: quita las almohadillas para mostrar la sección.
+# awards:
+#   - date: "2026"
+#     text: "**Nombre del premio**, Institución"
 
 # ---------------------------------------------------------------------
-# Secciones adicionales opcionales (Education, Teaching, Supervision...).
-# Cada grupo es una lista; "dated: true" muestra la fecha a la izquierda.
+# Secciones adicionales. "dated: true" muestra la fecha a la izquierda.
 extra_sections:
-  - id: education
-    title: "Education"
+  - id: projects
+    title: "Research projects"
+    groups:
+      - items:
+          - title: "NutritionBERT: a physically and biochemically constrained masked Transformer for nutrient profile prediction"
+            meta: "A masked Transformer that predicts the nutrient profile of foods from their molecular composition, with physical and biochemical constraints built into the model, evaluated on a leakage-controlled benchmark so that results reflect generalisation to unseen foods rather than memorisation of near-duplicates."
+            badges:
+              - text: "in progress"
+          - title: "AI-driven Collision Cross Section (CCS) prediction for metabolomics"
+            meta: "Research placement, MSc Biomedical Data Science, Universitat Rovira i Virgili. CCS prediction from molecular structure for molecular identification in ion mobility spectrometry: a reproducible baseline from molecular fingerprints, m/z and adduct type, benchmarked against Mol2Vec and ChemBERTa SMILES embeddings, with analysis by adduct type."
+
+  - id: experience
+    title: "Experience"
     groups:
       - dated: true
         items:
-          - date: "2026"
-            title: "MSc in Health Data Science (MHEDAS)"
-            meta: "Inter-university master's degree · Thesis: *NutritionBERT* · supervised by Ahmad AlMughrabi and Petia Radeva"
-          - date: "TODO"
-            title: "TODO Bachelor's degree"
-            meta: "TODO University"
+          - date: "2023 – 2026"
+            title: "Principal Architect, Data & AI"
+            meta: "Intelygenz (VASS Group), Madrid · applied AI for the company's generative AI platform: foundation models, AI agents and multi-agent systems, model evaluation and MLOps"
+          - date: "2021 – 2023"
+            title: "Principal Architect, Data & AI"
+            meta: "Sopra Steria, Madrid · AI adoption roadmaps and cloud-native AI architectures for European finance and public-sector accounts"
+          - date: "2020 – 2021"
+            title: "Service Manager, Cloud"
+            meta: "Santander Global Tech, Madrid"
+          - date: "2017 – 2020"
+            title: "Enterprise Architect, Data & AI"
+            meta: "KPMG Lighthouse, Madrid"
+          - date: "2005 – 2017"
+            title: "Earlier career"
+            meta: "Big data architecture (Qvantel, Cargill), programme management (Santander UK) and solution architecture and team leadership (ISBAN, Santander Group)"
+
+  - id: education
+    title: "Education"
+    groups:
+      - items:
+          - title: "PhD candidate, Mathematics and Computer Science"
+            meta: "Universitat de Barcelona, 2026 – present · AIBA research group"
+          - title: "MSc, Biomedical Data Science"
+            meta: "Universitat Rovira i Virgili, School of Engineering"
+          - title: "MSc, Advanced and Applied Artificial Intelligence"
+            meta: "Universitat de València"
+          - title: "BSc (Hons) Computing"
+            meta: "Edinburgh Napier University"
+            badges:
+              - text: "First Class"
+                award: true
