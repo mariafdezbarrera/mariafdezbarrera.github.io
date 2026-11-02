@@ -41,9 +41,9 @@
 
   <nav aria-label="Sections">
     {%- if h.research %}<a href="#research">{{ h.labels.research | default: "Research" }}</a>{% endif %}
-    {%- if h.awards %}<a href="#awards">{{ h.labels.awards | default: "Awards" }}</a>{% endif %}
-    {%- if pubs.size > 0 %}<a href="#publications">{{ h.labels.publications | default: "Publications" }}</a>{% endif %}
-    {%- if talks.size > 0 %}<a href="#talks">{{ h.labels.talks | default: "Talks &amp; posters" }}</a>{% endif %}
+    {%- if h.awards or h.show_all_sections %}<a href="#awards">{{ h.labels.awards | default: "Awards" }}</a>{% endif %}
+    {%- if pubs.size > 0 or h.show_all_sections %}<a href="#publications">{{ h.labels.publications | default: "Publications" }}</a>{% endif %}
+    {%- if talks.size > 0 or h.show_all_sections %}<a href="#talks">{{ h.labels.talks | default: "Talks &amp; posters" }}</a>{% endif %}
     {%- for s in h.extra_sections %}<a href="#{{ s.id }}">{{ s.title }}</a>{% endfor %}
   </nav>
 
@@ -67,9 +67,10 @@
   </section>
   {%- endif %}
 
-  {%- if h.awards %}
+  {%- if h.awards or h.show_all_sections %}
   <section>
     <h2 id="awards">{{ h.labels.awards | default: "Awards" }}</h2>
+    {%- unless h.awards %}<p class="muted">{{ h.labels.coming_soon | default: "Coming soon." }}</p>{% endunless %}
     <ul class="entries dated">
       {%- for a in h.awards %}
       <li>
@@ -81,9 +82,10 @@
   </section>
   {%- endif %}
 
-  {%- if pubs.size > 0 %}
+  {%- if pubs.size > 0 or h.show_all_sections %}
   <section>
     <h2 id="publications">{{ h.labels.publications | default: "Publications" }}</h2>
+    {%- if pubs.size == 0 %}<p class="muted">{{ h.labels.coming_soon | default: "Coming soon." }}</p>{% endif %}
 
     {%- for p in featured %}
     {%- assign pu = p.paperurl | default: "" | strip -%}{%- if pu != "" %}{% assign link = pu %}{% else %}{% assign link = p.url | relative_url %}{% endif -%}
@@ -100,7 +102,7 @@
     {%- endfor %}
 
     {%- if n_others > 0 %}
-    <h3 class="sub">{% if featured.size > 0 %}{{ h.labels.more_publications | default: "More publications" }}{% endif %}</h3>
+    {%- if featured.size > 0 %}<h3 class="sub">{{ h.labels.more_publications | default: "More publications" }}</h3>{% endif %}
     <ul class="entries">
       {%- for p in pubs %}{% if p.featured == true %}{% continue %}{% endif %}
       <li>
@@ -113,13 +115,14 @@
   </section>
   {%- endif %}
 
-  {%- if talks.size > 0 %}
+  {%- if talks.size > 0 or h.show_all_sections %}
   <section>
     <h2 id="talks">{{ h.labels.talks | default: "Talks &amp; posters" }}</h2>
+    {%- if talks.size == 0 %}<p class="muted">{{ h.labels.coming_soon | default: "Coming soon." }}</p>{% endif %}
     <ul class="entries dated">
       {%- for t in talks %}
       <li>
-        <span class="date">{{ t.display_date | default: t.date | date: "%-d %b %Y" }}</span>
+        <span class="date">{% if t.display_date %}{{ t.display_date }}{% else %}{{ t.date | date: "%-d %b %Y" }}{% endif %}</span>
         <div>
           <span class="title">{{ t.title }}</span>{% if t.type %} <span class="badge">{{ t.type }}</span>{% endif %}<br>
           <span class="meta">{% assign vu = t.venueurl | default: "" %}{% if vu != "" %}<a href="{{ t.venueurl }}">{{ t.venue }}</a>{% else %}{{ t.venue }}{% endif %}{% if t.location %}, {{ t.location }}{% endif %}</span>

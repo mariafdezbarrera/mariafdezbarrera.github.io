@@ -2,7 +2,8 @@
 #  CONTENIDO DE LA PÁGINA PRINCIPAL (https://mariafdezbarrera.github.io)
 #  Edita este archivo para cambiar textos, enlaces y secciones.
 #  Las publicaciones van en la carpeta _publications/ y las charlas en _talks/
-#  (si están vacías, esas secciones no aparecen).
+#  Las 5 secciones del menú (Research, Awards, Publications, Talks & posters,
+#  Supervision) siempre aparecen; si una está vacía muestra "Coming soon.".
 # =====================================================================
 
 lang: en
@@ -21,7 +22,7 @@ bio: |
   computer vision applied to biology and medicine, and I supervise students in their research projects.
 
   Before the PhD I spent nearly 20 years as an R&D and engineering leader, turning Data & AI research into production systems
-  for regulated industries, most recently as Principal Architect, Data & AI at Intelygenz (VASS Group), Sopra Steria and KPMG Lighthouse.
+  for regulated industries.
   I hold an MSc in Biomedical Data Science from the Universitat Rovira i Virgili, an MSc in Advanced and Applied Artificial
   Intelligence from the Universitat de València, and a First Class BSc (Hons) in Computing from Edinburgh Napier University.
 
@@ -31,12 +32,14 @@ links:
     url: "mailto:mfernaba184@doct.ub.edu"
   - name: CV
     url: "files/CV.pdf"
+  - name: Bio
+    url: "files/bio.txt"
+  - name: Google Scholar
+    url: "#"          # TODO: pega aquí la URL de tu perfil de Google Scholar
   - name: LinkedIn
     url: "https://www.linkedin.com/in/mar%C3%ADa-fern%C3%A1ndez-barrera"
   - name: GitHub
     url: "https://github.com/mariafdezbarrera"
-  # - name: Google Scholar        # quita las almohadillas cuando tengas perfil
-  #   url: "https://scholar.google.com/citations?user=XXXX"
 
 # Títulos de las secciones
 labels:
@@ -45,6 +48,10 @@ labels:
   publications: "Publications"
   more_publications: "More publications"
   talks: "Talks & posters"
+  coming_soon: "Coming soon."
+
+# Mostrar siempre las 5 secciones del menú, aunque estén vacías
+show_all_sections: true
 
 # ---------------------------------------------------------------------
 # Sección Research
@@ -70,58 +77,22 @@ supervisors:
   # Para añadir otra persona, copia uno de los bloques anteriores (desde "- name:").
 
 # ---------------------------------------------------------------------
-# Premios: quita las almohadillas para mostrar la sección.
+# Premios: quita las almohadillas y rellena para que aparezcan.
 # awards:
-#   - date: "2026"
+#   - date: "Jun 2026"
 #     text: "**Nombre del premio**, Institución"
 
 # ---------------------------------------------------------------------
-# Secciones adicionales. "dated: true" muestra la fecha a la izquierda.
+# Supervision (última sección del menú, igual que en amughrabi.github.io)
 extra_sections:
-  - id: projects
-    title: "Research projects"
+  - id: supervision
+    title: "Supervision"
+    intro: |
+      I supervise students in their research projects at the Universitat de Barcelona.
     groups:
-      - items:
-          - title: "NutritionBERT: a physically and biochemically constrained masked Transformer for nutrient profile prediction"
-            meta: "A masked Transformer that predicts the nutrient profile of foods from their molecular composition, with physical and biochemical constraints built into the model, evaluated on a leakage-controlled benchmark so that results reflect generalisation to unseen foods rather than memorisation of near-duplicates."
-            badges:
-              - text: "in progress"
-          - title: "AI-driven Collision Cross Section (CCS) prediction for metabolomics"
-            meta: "Research placement, MSc Biomedical Data Science, Universitat Rovira i Virgili. CCS prediction from molecular structure for molecular identification in ion mobility spectrometry: a reproducible baseline from molecular fingerprints, m/z and adduct type, benchmarked against Mol2Vec and ChemBERTa SMILES embeddings, with analysis by adduct type."
-
-  - id: experience
-    title: "Experience"
-    groups:
-      - dated: true
-        items:
-          - date: "2023 – 2026"
-            title: "Principal Architect, Data & AI"
-            meta: "Intelygenz (VASS Group), Madrid · applied AI for the company's generative AI platform: foundation models, AI agents and multi-agent systems, model evaluation and MLOps"
-          - date: "2021 – 2023"
-            title: "Principal Architect, Data & AI"
-            meta: "Sopra Steria, Madrid · AI adoption roadmaps and cloud-native AI architectures for European finance and public-sector accounts"
-          - date: "2020 – 2021"
-            title: "Service Manager, Cloud"
-            meta: "Santander Global Tech, Madrid"
-          - date: "2017 – 2020"
-            title: "Enterprise Architect, Data & AI"
-            meta: "KPMG Lighthouse, Madrid"
-          - date: "2005 – 2017"
-            title: "Earlier career"
-            meta: "Big data architecture (Qvantel, Cargill), programme management (Santander UK) and solution architecture and team leadership (ISBAN, Santander Group)"
-
-  - id: education
-    title: "Education"
-    groups:
-      - items:
-          - title: "PhD candidate, Mathematics and Computer Science"
-            meta: "Universitat de Barcelona, 2026 – present · AIBA research group"
-          - title: "MSc, Biomedical Data Science"
-            meta: "Universitat Rovira i Virgili, School of Engineering"
-          - title: "MSc, Advanced and Applied Artificial Intelligence"
-            meta: "Universitat de València"
-          - title: "BSc (Hons) Computing"
-            meta: "Edinburgh Napier University"
-            badges:
-              - text: "First Class"
-                award: true
+      # Quita las almohadillas para añadir estudiantes:
+      # - title: "Master's theses"
+      #   items:
+      #     - title: "Nombre del estudiante"
+      #       meta: "Título del trabajo, 2026"
+      - items: []
