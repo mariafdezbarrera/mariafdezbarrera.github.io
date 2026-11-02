@@ -1,0 +1,83 @@
+# =====================================================================
+#  CONTENIDO DE LA PÁGINA PRINCIPAL (https://mariafdezbarrera.github.io)
+#  Edita este archivo para cambiar textos, enlaces, premios y secciones.
+#  Las publicaciones van en la carpeta _publications/ y las charlas en _talks/
+#  Busca "TODO" para ver lo que falta por completar.
+# =====================================================================
+
+lang: en
+name: "María del Pilar Fernández Barrera"
+role: "PhD student in Artificial Intelligence · Universitat de Barcelona"   # TODO: ajusta tu puesto/universidad
+location: "Barcelona, Spain"                                                # TODO
+description: "María del Pilar Fernández Barrera, PhD researcher in AI for health and nutrition."
+
+# Foto (cuadrada o vertical 4:5). Sube tu foto a images/ con este nombre.
+photo: "images/profile.jpg"
+
+# Biografía (admite Markdown: **negrita**, [enlace](url), párrafos separados por línea en blanco)
+bio: |
+  I am a PhD student at the [Universitat de Barcelona](https://www.ub.edu/) working on artificial intelligence
+  for health and nutrition. TODO: one or two sentences about your thesis topic, research group and funding.
+
+  I hold a Master's Degree in [Health Data Science (MHEDAS)](https://www.urv.cat/en/studies/master/courses/health-data-science/),
+  where my thesis introduced NutritionBERT, a physics-informed masked transformer for nutritional profile prediction.
+  TODO: previous degrees and professional experience.
+
+# Botones de enlaces bajo la biografía. Los archivos locales van en files/ (p. ej. files/CV.pdf)
+links:
+  - name: Email
+    url: "mailto:TODO@example.com"          # TODO: tu email público
+  - name: CV
+    url: "files/CV.pdf"                      # sube tu CV a files/CV.pdf
+  - name: Google Scholar
+    url: "https://scholar.google.com/"      # TODO
+  - name: LinkedIn
+    url: "https://www.linkedin.com/"        # TODO
+  - name: GitHub
+    url: "https://github.com/mariafdezbarrera"
+
+# Títulos de las secciones (puedes traducirlos al español)
+labels:
+  research: "Research"
+  awards: "Awards"
+  publications: "Publications"
+  more_publications: "More publications"
+  talks: "Talks & posters"
+
+# ---------------------------------------------------------------------
+# Sección Research (déjala vacía o bórrala para ocultarla)
+research: |
+  I work on machine learning for health data: representation learning, transformers and nutrition informatics.
+  TODO: describe your PhD project, funding and grant numbers. My supervisors are:
+
+supervisors:
+  - name: "Petia Radeva"                     # TODO: confirma tus directores
+    url: "http://www.ub.edu/cvub/petiaradeva/"
+    photo: "images/supervisor1.jpg"         # sube la foto a images/
+    desc: "Full Professor at the Universitat de Barcelona and head of the AIBA research group."
+  - name: "TODO Supervisor 2"
+    url: ""
+    photo: "images/supervisor2.jpg"
+    desc: "TODO: affiliation."
+
+# ---------------------------------------------------------------------
+# Premios (bórralos todos para ocultar la sección)
+awards:
+  - date: "2026"
+    text: "**TODO award name**, Institution"
+
+# ---------------------------------------------------------------------
+# Secciones adicionales opcionales (Education, Teaching, Supervision...).
+# Cada grupo es una lista; "dated: true" muestra la fecha a la izquierda.
+extra_sections:
+  - id: education
+    title: "Education"
+    groups:
+      - dated: true
+        items:
+          - date: "2026"
+            title: "MSc in Health Data Science (MHEDAS)"
+            meta: "Inter-university master's degree · Thesis: *NutritionBERT* · supervised by Ahmad AlMughrabi and Petia Radeva"
+          - date: "TODO"
+            title: "TODO Bachelor's degree"
+            meta: "TODO University"

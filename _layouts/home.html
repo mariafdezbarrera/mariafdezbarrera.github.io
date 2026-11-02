@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+{%- assign h = site.data.home -%}
+{%- assign base = site.baseurl -%}
+<html lang="{{ h.lang | default: 'en' }}">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ h.name }}</title>
+  <meta name="author" content="{{ h.name }}">
+  <meta name="description" content="{{ h.description | strip_html | strip }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600&display=swap">
+  <link rel="stylesheet" href="{{ base }}/assets/css/home.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%8C%90%3C%2Ftext%3E%3C%2Fsvg%3E">
+</head>
+
+<body>
+<main>
+
+  <header class="intro">
+    <div>
+      <h1>{{ h.name }}</h1>
+      <p class="role">{{ h.role }}</p>
+      {{ h.bio | markdownify }}
+      <ul class="links">
+        {%- for l in h.links %}
+        <li><a href="{% if l.url contains '://' or l.url contains 'mailto:' %}{{ l.url }}{% else %}{{ base }}/{{ l.url }}{% endif %}">{{ l.name }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+    {%- if h.photo %}
+    <a class="photo" href="{{ base }}/{{ h.photo }}"><img src="{{ base }}/{{ h.photo }}" alt="Portrait of {{ h.name }}"></a>
+    {%- endif %}
+  </header>
+
+  {%- assign pubs = site.publications | sort: "date" | reverse -%}
+  {%- assign featured = pubs | where: "featured", true -%}
+  {%- assign n_others = pubs.size | minus: featured.size -%}
+  {%- assign talks = site.talks | sort: "date" | reverse -%}
+
+  <nav aria-label="Sections">
+    {%- if h.research %}<a href="#research">{{ h.labels.research | default: "Research" }}</a>{% endif %}
+    {%- if h.awards %}<a href="#awards">{{ h.labels.awards | default: "Awards" }}</a>{% endif %}
+    {%- if pubs.size > 0 %}<a href="#publications">{{ h.labels.publications | default: "Publications" }}</a>{% endif %}
+    {%- if talks.size > 0 %}<a href="#talks">{{ h.labels.talks | default: "Talks &amp; posters" }}</a>{% endif %}
+    {%- for s in h.extra_sections %}<a href="#{{ s.id }}">{{ s.title }}</a>{% endfor %}
+  </nav>
+
+  {%- if h.research %}
+  <section>
+    <h2 id="research">{{ h.labels.research | default: "Research" }}</h2>
+    {{ h.research | markdownify }}
+    {%- if h.supervisors %}
+    <div class="people">
+      {%- for p in h.supervisors %}
+      <div class="person">
+        {% assign sp = p.photo | default: "" %}{% if sp != "" %}<img src="{{ base }}/{{ p.photo }}" alt="">{% endif %}
+        <div>
+          {% assign su = p.url | default: "" %}{% if su != "" %}<a href="{{ su }}">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}<br>
+          <span class="muted">{{ p.desc }}</span>
+        </div>
+      </div>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+  </section>
+  {%- endif %}
+
+  {%- if h.awards %}
+  <section>
+    <h2 id="awards">{{ h.labels.awards | default: "Awards" }}</h2>
+    <ul class="entries dated">
+      {%- for a in h.awards %}
+      <li>
+        <span class="date">{{ a.date }}</span>
+        <div>{{ a.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}</div>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endif %}
+
+  {%- if pubs.size > 0 %}
+  <section>
+    <h2 id="publications">{{ h.labels.publications | default: "Publications" }}</h2>
+
+    {%- for p in featured %}
+    {%- assign pu = p.paperurl | default: "" | strip -%}{%- if pu != "" %}{% assign link = pu %}{% else %}{% assign link = p.url | relative_url %}{% endif -%}
+    <article class="pub">
+      <a class="thumb" href="{{ link }}">{% assign th = p.thumbnail | default: "" %}{% if th != "" %}<img src="{{ base }}/{{ p.thumbnail }}" alt="" loading="lazy">{% endif %}</a>
+      <div>
+        <h3><a href="{{ link }}">{{ p.title }}</a></h3>
+        <div class="authors">{{ p.authors | markdownify | remove: '<p>' | remove: '</p>' | strip }}</div>
+        <p class="pub-links"><span class="badge{% if p.award %} award{% endif %}">{{ p.badge | default: p.venue }}</span> &nbsp;
+          {%- for l in p.links %}{% unless forloop.first %} /{% endunless %} <a href="{% if l.url contains '://' %}{{ l.url }}{% else %}{{ base }}/{{ l.url }}{% endif %}">{{ l.name }}</a>{% endfor %}</p>
+        {%- if p.desc %}<p class="desc">{{ p.desc }}</p>{% endif %}
+      </div>
+    </article>
+    {%- endfor %}
+
+    {%- if n_others > 0 %}
+    <h3 class="sub">{% if featured.size > 0 %}{{ h.labels.more_publications | default: "More publications" }}{% endif %}</h3>
+    <ul class="entries">
+      {%- for p in pubs %}{% if p.featured == true %}{% continue %}{% endif %}
+      <li>
+        {%- assign pu = p.paperurl | default: "" | strip -%}<span class="title">{% if pu != "" %}<a href="{{ pu }}">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</span><br>
+        <span class="meta">{{ p.authors | markdownify | remove: '<p>' | remove: '</p>' | strip }}<br>{{ p.badge | default: p.venue }}</span>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+  </section>
+  {%- endif %}
+
+  {%- if talks.size > 0 %}
+  <section>
+    <h2 id="talks">{{ h.labels.talks | default: "Talks &amp; posters" }}</h2>
+    <ul class="entries dated">
+      {%- for t in talks %}
+      <li>
+        <span class="date">{{ t.display_date | default: t.date | date: "%-d %b %Y" }}</span>
+        <div>
+          <span class="title">{{ t.title }}</span>{% if t.type %} <span class="badge">{{ t.type }}</span>{% endif %}<br>
+          <span class="meta">{% assign vu = t.venueurl | default: "" %}{% if vu != "" %}<a href="{{ t.venueurl }}">{{ t.venue }}</a>{% else %}{{ t.venue }}{% endif %}{% if t.location %}, {{ t.location }}{% endif %}</span>
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endif %}
+
+  {%- for s in h.extra_sections %}
+  <section>
+    <h2 id="{{ s.id }}">{{ s.title }}</h2>
+    {%- if s.intro %}{{ s.intro | markdownify }}{% endif %}
+    {%- for g in s.groups %}
+    {%- if g.title %}<h3 class="sub">{{ g.title }}</h3>{% endif %}
+    {%- if g.note %}<p class="muted">{{ g.note | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>{% endif %}
+    <ul class="entries{% if g.dated %} dated{% endif %}">
+      {%- for e in g.items %}
+      <li>
+        {%- if g.dated %}<span class="date">{{ e.date }}</span><div>{% endif %}
+        <span class="title">{{ e.title | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span>
+        {%- for b in e.badges %} <span class="badge{% if b.award %} award{% endif %}">{{ b.text }}</span>{% endfor %}
+        {%- if e.meta %}<br><span class="meta">{{ e.meta | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span>{% endif %}
+        {%- if g.dated %}</div>{% endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- endfor %}
+  </section>
+  {%- endfor %}
+
+  <footer>
+    &copy; {{ h.name }}{% if h.location %} &middot; {{ h.location }}{% endif %}
+  </footer>
+
+</main>
+</body>
+</html>
