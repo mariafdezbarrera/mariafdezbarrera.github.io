@@ -2,6 +2,8 @@
 #  CONTENIDO DE LA PÁGINA PRINCIPAL (https://mariafdezbarrera.github.io)
 #  Edita este archivo para cambiar textos, enlaces y secciones.
 #  Las publicaciones van en la carpeta _publications/ y las charlas en _talks/
+#  Los proyectos del Portfolio van en la carpeta _portfolio/ (un archivo por
+#  proyecto) y se muestran en la página /portfolio/ (enlace "Portfolio" del menú).
 #  Las 5 secciones del menú (Research, Awards, Publications, Talks & posters,
 #  Supervision) siempre aparecen; si una está vacía muestra "Coming soon.".
 # =====================================================================
@@ -21,8 +23,8 @@ bio: |
   and a member of the [AIBA](https://www.ub.edu/aiba/) research group. My research focuses on artificial intelligence and
   computer vision applied to biology and medicine, and I supervise students in their research projects.
 
-  Before the PhD I spent nearly 20 years as an R&D and engineering leader, turning Data & AI research into production systems
-  for regulated industries.
+  Before the PhD I spent nearly 20 years as an R&D, engineering and architecture expert, turning Data & AI research and solutions
+  into production systems for regulated industries.
   I hold an MSc in Biomedical Data Science from the Universitat Rovira i Virgili, an MSc in Advanced and Applied Artificial
   Intelligence from the Universitat de València, and a First Class BSc (Hons) in Computing from Edinburgh Napier University.
 
@@ -44,6 +46,7 @@ links:
 # Títulos de las secciones
 labels:
   research: "Research"
+  portfolio: "Portfolio"
   awards: "Awards"
   publications: "Publications"
   more_publications: "More publications"

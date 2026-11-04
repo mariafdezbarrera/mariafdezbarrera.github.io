@@ -43,6 +43,7 @@
     {%- if h.research %}<a href="#research">{{ h.labels.research | default: "Research" }}</a>{% endif %}
     {%- if h.awards or h.show_all_sections %}<a href="#awards">{{ h.labels.awards | default: "Awards" }}</a>{% endif %}
     {%- if pubs.size > 0 or h.show_all_sections %}<a href="#publications">{{ h.labels.publications | default: "Publications" }}</a>{% endif %}
+    {%- if site.portfolio.size > 0 or h.show_all_sections %}<a href="{{ base }}/portfolio/">{{ h.labels.portfolio | default: "Portfolio" }}</a>{% endif %}
     {%- if talks.size > 0 or h.show_all_sections %}<a href="#talks">{{ h.labels.talks | default: "Talks &amp; posters" }}</a>{% endif %}
     {%- for s in h.extra_sections %}<a href="#{{ s.id }}">{{ s.title }}</a>{% endfor %}
   </nav>
@@ -66,6 +67,7 @@
     {%- endif %}
   </section>
   {%- endif %}
+
 
   {%- if h.awards or h.show_all_sections %}
   <section>

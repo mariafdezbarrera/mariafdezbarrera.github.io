@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{%- assign h = site.data.home -%}
+{%- assign base = site.baseurl -%}
+<html lang="{{ h.lang | default: 'en' }}">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ h.labels.portfolio | default: "Portfolio" }} · {{ h.name }}</title>
+  <meta name="author" content="{{ h.name }}">
+  <meta name="description" content="Portfolio of research projects by {{ h.name }}.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600&display=swap">
+  <link rel="stylesheet" href="{{ base }}/assets/css/home.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%8C%90%3C%2Ftext%3E%3C%2Fsvg%3E">
+</head>
+
+<body>
+<main>
+
+  <header>
+    <h1><a href="{{ base }}/" style="color:inherit">{{ h.name }}</a></h1>
+    <p class="muted" style="margin:0">{{ h.role }}</p>
+  </header>
+
+  <nav aria-label="Sections">
+    <a href="{{ base }}/#research">{{ h.labels.research | default: "Research" }}</a>
+    <a href="{{ base }}/#awards">{{ h.labels.awards | default: "Awards" }}</a>
+    <a href="{{ base }}/#publications">{{ h.labels.publications | default: "Publications" }}</a>
+    <a href="{{ base }}/portfolio/" aria-current="page"><strong>{{ h.labels.portfolio | default: "Portfolio" }}</strong></a>
+    <a href="{{ base }}/#talks">{{ h.labels.talks | default: "Talks &amp; posters" }}</a>
+    {%- for s in h.extra_sections %}<a href="{{ base }}/#{{ s.id }}">{{ s.title }}</a>{% endfor %}
+  </nav>
+
+  <section>
+    <h2 id="portfolio">{{ h.labels.portfolio | default: "Portfolio" }}</h2>
+    {%- assign items = site.portfolio | sort: "date" | reverse -%}
+    {%- if items.size == 0 %}<p class="muted">{{ h.labels.coming_soon | default: "Coming soon." }}</p>{% endif %}
+
+    {%- for p in items %}
+    {%- assign u = p.url | relative_url -%}
+    {%- assign summary = p.summary | default: p.excerpt -%}
+    <article class="pub">
+      {%- assign th = p.thumbnail | default: "" %}
+      {%- if u != "" %}<a class="thumb" href="{{ u }}">{% else %}<div class="thumb">{% endif %}
+        {%- if th != "" %}<img src="{{ base }}/{{ th }}" alt="" loading="lazy">{% endif %}
+      {%- if u != "" %}</a>{% else %}</div>{% endif %}
+      <div>
+        <h3>{% if u != "" %}<a href="{{ u }}">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</h3>
+        {%- if p.authors %}<div class="authors">{{ p.authors | markdownify | remove: '<p>' | remove: '</p>' | strip }}</div>{% endif %}
+        <p class="pub-links">{% for b in p.badges %}<span class="badge{% if b.award %} award{% endif %}">{{ b.text }}</span> {% endfor %}
+          &nbsp;<a href="{{ u }}">project page</a>
+          {%- for l in p.links %} / <a href="{% if l.url contains '://' %}{{ l.url }}{% else %}{{ base }}/{{ l.url }}{% endif %}">{{ l.name }}</a>{% endfor %}</p>
+        {%- if summary %}<p class="desc">{{ summary | strip_html }}</p>{% endif %}
+      </div>
+    </article>
+    {%- endfor %}
+  </section>
+
+  <footer>
+    &copy; {{ h.name }}{% if h.location %} &middot; {{ h.location }}{% endif %}
+  </footer>
+
+</main>
+</body>
+</html>
